@@ -48,19 +48,27 @@
 </body>
 </html>
 
-
-<title>Blinkender Button</title>
-<script>
-    // Funktion, die das Blinken eines Elements bewirkt
-    function blink(element) {
-        var interval = setInterval(function () {
-            element.style.visibility = (element.style.visibility == 'hidden' ? '' : 'hidden');
-        }, 500); // Blink-Intervall von 500 Millisekunden
-        
-        // Nach 5 Sekunden das Blinken beenden
-        setTimeout(function () {
-            clearInterval(interval);
-            element.style.visibility = ''; // Element sichtbar machen
-        }, 5000);
-    }
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blinkender Button</title>
+    <script>
+        // Funktion, die das Blinken eines Elements bewirkt
+        function blink(element) {
+            var interval = setInterval(function () {
+                element.style.visibility = (element.style.visibility == 'hidden' ? '' : 'hidden');
+            }, 500); // Blink-Intervall von 500 Millisekunden
+            
+            // Nach 5 Sekunden das Blinken beenden
+            setTimeout(function () {
+                clearInterval(interval);
+                element.style.visibility = ''; // Element sichtbar machen
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="blink(document.getElementById('blinkElement'));">Blinken starten</button>
+    <div id="blinkElement" style="width: 100px; height: 100px; background-color: yellow;">Blinkendes Element</div>
+</body>
+</html>
