@@ -52,4 +52,83 @@
         <p>Marcel Hirscher ist für seine bescheidene Persönlichkeit und seine Entschlossenheit auf der Skipiste bekannt. Neben dem Skifahren interessiert er sich für Bergsteigen und Mountainbiken.</p>
     </section>
 </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcel Hirscher Webseite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+        }
+        h1, h2, p {
+            margin-bottom: 10px;
+        }
+        .gold-frame {
+            border: 2px solid gold;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        #snowflakeContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marcel Hirscher</h1>
+        <p>Professioneller Skifahrer</p>
+    </header>
+    <section>
+        <h2>Über Marcel Hirscher</h2>
+        <p>Marcel Hirscher ist ein österreichischer Skifahrer, der zu den erfolgreichsten alpinen Skirennläufern aller Zeiten gehört.</p>
+        <button onclick="startSnowfall()">Schnee fallen lassen</button>
+    </section>
+    <section class="gold-frame">
+        <h2>Erfolge</h2>
+        <ul>
+            <li>Sieger des Gesamtweltcups der alpinen Skirennläufer 8 Mal (2012–2019)</li>
+            <li>Gewinner von 11 Goldmedaillen bei Weltmeisterschaften</li>
+            <li>Olympiasieger in den Disziplinen Slalom und Riesenslalom bei den Olympischen Winterspielen 2018</li>
+        </ul>
+    </section>
+    <script>
+        function startSnowfall() {
+            var numFlakes = 50; // Anzahl der Schneeflocken
+            var snowflakeContainer = document.getElementById("snowflakeContainer");
+
+            // Erstellen von Schneeflocken und Hinzufügen zum Container
+            for (var i = 0; i < numFlakes; i++) {
+                var flake = document.createElement("div");
+                flake.classList.add("snowflake");
+                flake.style.left = Math.random() * 100 + "vw"; // zufällige horizontale Position
+                flake.style.animationDuration = Math.random() * 5 + 3 + "s"; // zufällige Animationsdauer
+                snowflakeContainer.appendChild(flake);
+            }
+        }
+    </script>
+    <div id="snowflakeContainer"></div>
+</body>
+</html>
 </html>
