@@ -18,57 +18,68 @@
     <img src="https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwallsdesk.com%2Fwp-content%2Fuploads%2F2017%2F01%2FSunflower-HD-Desktop.jpg&sp=1706105845T11dbe2294ac1527852350d66c581749dfff69969bd70abd8320c926c988a08c1" alt="Blumiges Bild" width="400">
     <img-width: 50%; 
 
-    <p>Sunflowers are known for their bright and cheerful appearance. With their golden-yellow petals, sunflowers symbolize happiness and warmth. These vibrant flowers have a unique ability to turn and follow the sun throughout the day, a behavior known as heliotropism. Enjoy the beauty and positivity that sunflowers bring to any environment!</p>
-
-</body>
-<body>
- 
-    <p style="font-size: 18px;">Sunflowes</p>
- 
-    <p style="font-size: 24px;">Are beautiful</p>
- 
-    <p style="font-size: 20px;">This is text with a font size of 20 pixels.</p>
- 
-    <p style="font-size: 20px; background-color: rgb(255, 157, 0); border-style: dotted;">In fields of color, blooms unfold,
-        A canvas painted, a story told.
-        Petals dancing in the breeze,
-        A symphony of fragrances, a sweet tease.
-        
-        Lilies nod with elegance,
-        Their trumpets singing, a floral dance.
-        Roses don a robe of love,
-        Thorns beneath, yet soft above.
-        
-        Daisies sway in meadows wide,
-        Simple beauty, none can hide.
-        Tulips stand in rows so neat,
-        A rainbow garden, a visual treat.</p>
-   
-    <p style="font-size: 24px; background-color: rgb(226, 122, 43); border-color: rgb(120, 46, 4);">TSunflowers, with their vibrant yellow petals and dark, intricate centers, stand as a symbol of joy and positivity. These captivating flowers, known for their heliotropic nature, gracefully follow the sun's path across the sky, turning their faces to bask in its warm rays. Sunflowers not only add a touch of cheerfulness to gardens and landscapes but also evoke a sense of optimism and brightness. Their towering stems and large, expressive blooms make sunflowers a favorite choice for bringing a burst of sunshine into any environment. Whether in fields, bouquets, or art, sunflowers embody the beauty of nature and radiate a sunny charm that uplifts the spirit.</p>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blinkender Button</title>
-    <script>
-        // Funktion, die das Blinken eines Elements bewirkt
-        function blink(element) {
-            var interval = setInterval(function () {
-                element.style.visibility = (element.style.visibility == 'hidden' ? '' : 'hidden');
-            }, 500); // Blink-Intervall von 500 Millisekunden
-            
-            // Nach 5 Sekunden das Blinken beenden
-            setTimeout(function () {
-                clearInterval(interval);
-                element.style.visibility = ''; // Element sichtbar machen
-            }, 5000);
+    import java.awt.*;
+    import java.awt.event.*;
+    import javax.swing.*;
+    
+    public class MarcelHirscherWebseite extends JFrame implements ActionListener {
+        private JLabel fotoLabel;
+        private JButton animationButton;
+        private Timer animationTimer;
+        private int xPosition;
+    
+        public MarcelHirscherWebseite() {
+            setTitle("Marcel Hirscher Steckbrief");
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLayout(new BorderLayout());
+    
+            // Foto von Marcel Hirscher
+            ImageIcon fotoIcon = new ImageIcon("marcel_hirscher.jpg");
+            fotoLabel = new JLabel(fotoIcon);
+    
+            // Button für die Animation
+            animationButton = new JButton("Start Animation");
+            animationButton.addActionListener(this);
+    
+            // Panel für das Foto und den Button
+            JPanel panel = new JPanel();
+            panel.add(fotoLabel);
+            panel.add(animationButton);
+    
+            add(panel, BorderLayout.CENTER);
+    
+            // Timer für die Animation initialisieren
+            animationTimer = new Timer(50, new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    xPosition += 5; // Bewegung um 5 Pixel nach rechts
+                    fotoLabel.setLocation(xPosition, fotoLabel.getY());
+                    if (xPosition >= getWidth()) {
+                        // Animation von links nach rechts abgeschlossen
+                        animationTimer.stop();
+                        xPosition = -fotoLabel.getWidth(); // Startposition zurücksetzen
+                        fotoLabel.setLocation(xPosition, fotoLabel.getY());
+                    }
+                }
+            });
+    
+            pack();
+            setLocationRelativeTo(null); // Zentrieren des Fensters auf dem Bildschirm
+            setVisible(true);
         }
-    </script>
-</head>
-<body>
-    <button onclick="blink(document.getElementById('blinkElement'));">Blinken starten</button>
-    <div id="blinkElement" style="width: 100px; height: 100px; background-color: yellow;">Blinkendes Element</div>
-</body>
-</html>
+    
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == animationButton) {
+                // Starte die Animation, wenn der Button geklickt wird
+                animationTimer.start();
+            }
+        }
+    
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    new MarcelHirscherWebseite();
+                }
+            });
+        }
+    }
+    
