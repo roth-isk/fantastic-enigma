@@ -1,85 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunflower Delight</title>
-    <style>
-        body {
-            background-color: rgba(243, 200, 73, 0.819);
-        }
-    </style>
-</head>
+public class MarcelHirscher {
+    private String name;
+    private int alter;
+    private String land;
+    private String sport;
 
-<body>
-
-    <h1>Sunflower Delight</h1>
-    
-    <img src="https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwallsdesk.com%2Fwp-content%2Fuploads%2F2017%2F01%2FSunflower-HD-Desktop.jpg&sp=1706105845T11dbe2294ac1527852350d66c581749dfff69969bd70abd8320c926c988a08c1" alt="Blumiges Bild" width="400">
-    <img-width: 50%; 
-
-    import java.awt.*;
-    import java.awt.event.*;
-    import javax.swing.*;
-    
-    public class MarcelHirscherWebseite extends JFrame implements ActionListener {
-        private JLabel fotoLabel;
-        private JButton animationButton;
-        private Timer animationTimer;
-        private int xPosition;
-    
-        public MarcelHirscherWebseite() {
-            setTitle("Marcel Hirscher Steckbrief");
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setLayout(new BorderLayout());
-    
-            // Foto von Marcel Hirscher
-            ImageIcon fotoIcon = new ImageIcon("marcel_hirscher.jpg");
-            fotoLabel = new JLabel(fotoIcon);
-    
-            // Button für die Animation
-            animationButton = new JButton("Start Animation");
-            animationButton.addActionListener(this);
-    
-            // Panel für das Foto und den Button
-            JPanel panel = new JPanel();
-            panel.add(fotoLabel);
-            panel.add(animationButton);
-    
-            add(panel, BorderLayout.CENTER);
-    
-            // Timer für die Animation initialisieren
-            animationTimer = new Timer(50, new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    xPosition += 5; // Bewegung um 5 Pixel nach rechts
-                    fotoLabel.setLocation(xPosition, fotoLabel.getY());
-                    if (xPosition >= getWidth()) {
-                        // Animation von links nach rechts abgeschlossen
-                        animationTimer.stop();
-                        xPosition = -fotoLabel.getWidth(); // Startposition zurücksetzen
-                        fotoLabel.setLocation(xPosition, fotoLabel.getY());
-                    }
-                }
-            });
-    
-            pack();
-            setLocationRelativeTo(null); // Zentrieren des Fensters auf dem Bildschirm
-            setVisible(true);
-        }
-    
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == animationButton) {
-                // Starte die Animation, wenn der Button geklickt wird
-                animationTimer.start();
-            }
-        }
-    
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    new MarcelHirscherWebseite();
-                }
-            });
-        }
+    public MarcelHirscher(String name, int alter, String land, String sport) {
+        this.name = name;
+        this.alter = alter;
+        this.land = land;
+        this.sport = sport;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAlter() {
+        return alter;
+    }
+
+    public String getLand() {
+        return land;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+
+    public static void main(String[] args) {
+        MarcelHirscher marcel = new MarcelHirscher("Marcel Hirscher", 32, "Österreich", "Ski Alpin");
+        System.out.println("Name: " + marcel.getName());
+        System.out.println("Alter: " + marcel.getAlter());
+        System.out.println("Land: " + marcel.getLand());
+        System.out.println("Sport: " + marcel.getSport());
+    }
+}
