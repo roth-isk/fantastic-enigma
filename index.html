@@ -47,3 +47,20 @@
     <p style="font-size: 24px; background-color: rgb(226, 122, 43); border-color: rgb(120, 46, 4);">TSunflowers, with their vibrant yellow petals and dark, intricate centers, stand as a symbol of joy and positivity. These captivating flowers, known for their heliotropic nature, gracefully follow the sun's path across the sky, turning their faces to bask in its warm rays. Sunflowers not only add a touch of cheerfulness to gardens and landscapes but also evoke a sense of optimism and brightness. Their towering stems and large, expressive blooms make sunflowers a favorite choice for bringing a burst of sunshine into any environment. Whether in fields, bouquets, or art, sunflowers embody the beauty of nature and radiate a sunny charm that uplifts the spirit.</p>
 </body>
 </html>
+
+
+<title>Blinkender Button</title>
+<script>
+    // Funktion, die das Blinken eines Elements bewirkt
+    function blink(element) {
+        var interval = setInterval(function () {
+            element.style.visibility = (element.style.visibility == 'hidden' ? '' : 'hidden');
+        }, 500); // Blink-Intervall von 500 Millisekunden
+        
+        // Nach 5 Sekunden das Blinken beenden
+        setTimeout(function () {
+            clearInterval(interval);
+            element.style.visibility = ''; // Element sichtbar machen
+        }, 5000);
+    }
+</script>
