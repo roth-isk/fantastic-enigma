@@ -14,8 +14,8 @@
 
   /* Style tab links */
   .tablink {
-    background-color: #555;
-    color: white;
+    background-color: #ddd;
+    color: #333;
     float: left;
     border: none;
     outline: none;
@@ -26,50 +26,66 @@
   }
 
   .tablink:hover {
-    background-color: #777;
+    background-color: #bbb;
   }
 
   /* Style the tab content (and add height:100% for full page content) */
   .tabcontent {
-    color: white;
+    color: #333;
     display: none;
-    padding: 100px 20px;
+    padding: 50px 20px;
     height: 100%;
   }
 
-  #Spring {background-color: rgb(235, 101, 101);}
-  #News {background-color: rgba(116, 243, 116, 0.885);}
-  #Contact {background-color: rgb(132, 132, 241);}
-  #About {background-color: rgb(235, 192, 111);}
+  #Spring {background-color: #ffb3ba;}
+  #Summer {background-color: #ffdfba;}
+  #Autumn {background-color: #fffbba;}
+  #Winter {background-color: #bae1ff;}
+
+  /* Style the headline */
+  .headline {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin: 0;
+  }
 </style>
 </head>
 <body>
 
+<!-- Headline -->
+<h1 class="headline">Full Page Tabs Example</h1>
+
 <!-- Create buttons to open specific tab content -->
-<button class="tablink" onclick="openPage('Spring', this, 'red')">Home</button>
-<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+<button class="tablink" onclick="openPage('Spring', this, '#ffb3ba')">Spring</button>
+<button class="tablink" onclick="openPage('Summer', this, '#ffdfba')" id="defaultOpen">Summer</button>
+<button class="tablink" onclick="openPage('Autumn', this, '#fffbba')">Autumn</button>
+<button class="tablink" onclick="openPage('Winter', this, '#bae1ff')">Winter</button>
 
 <!-- Tab content -->
-<div id="Home" class="tabcontent">
+<div id="Spring" class="tabcontent">
   <h3>Spring</h3>
-  <p>Home is where the heart is..</p>
+  <p>Spring is the season of new beginnings. Flowers bloom, birds chirp, and the world awakens from its winter slumber.</p>
+  <p>It's the perfect time for outdoor activities like picnics, hikes, and enjoying the fresh breeze.</p>
 </div>
 
-<div id="News" class="tabcontent">
-  <h3>News</h3>
-  <p>Some news this fine day!</p>
+<div id="Summer" class="tabcontent">
+  <h3>Summer</h3>
+  <p>Summer brings warmth and sunshine. It's the season of vacations, beach trips, and ice cream cones.</p>
+  <p>Long days and short nights invite us to make the most of each moment, whether it's lounging by the pool or hosting a barbecue with friends.</p>
 </div>
 
-<div id="Contact" class="tabcontent">
-  <h3>Contact</h3>
-  <p>Get in touch, or swing by for a cup of coffee.</p>
+<div id="Autumn" class="tabcontent">
+  <h3>Autumn</h3>
+  <p>Autumn paints the world in shades of gold and red. Leaves fall, temperatures drop, and cozy sweaters come out of storage.</p>
+  <p>It's a time for harvest festivals, pumpkin spice lattes, and long walks through crunchy leaves.</p>
 </div>
 
-<div id="About" class="tabcontent">
-  <h3>About</h3>
-  <p>Who we are and what we do.</p>
+<div id="Winter" class="tabcontent">
+  <h3>Winter</h3>
+  <p>Winter blankets everything in snow. It's a season of quiet beauty, of hot cocoa by the fireplace and snowball fights.</p>
+  <p>Whether you're skiing down slopes or snuggled up with a book, winter invites us to embrace the stillness and find warmth in small joys.</p>
 </div>
 
 <script>
