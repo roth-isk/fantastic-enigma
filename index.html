@@ -1,148 +1,102 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcel Hirscher - Skifahrer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            padding: 20px;
-        }
-        h1, h2, h3, p {
-            margin-bottom: 10px;
-        }
-        img {
-            display: block;
-            margin: auto;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Page Tabs</title>
+<style>
+  /* Set height of body and the document to 100% to enable "full page tabs" */
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+
+  /* Style tab links */
+  .tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+
+  .tablink:hover {
+    background-color: #777;
+  }
+
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+
+  #Home {background-color: red;}
+  #News {background-color: green;}
+  #Contact {background-color: blue;}
+  #About {background-color: orange;}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Marcel Hirscher</h1>
-        <p>Professioneller Skifahrer</p>
-    </header>
 
-    <html>
-        <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-        div.scroll-container {
-          background-color: #333;
-          overflow: auto;
-          white-space: nowrap;
-          padding: 10px;
-        }
-        
-        div.scroll-container img {
-          padding: 10px;
-        }
-        </style>
-        </head>
-        <body>
-        
-        
-        <div class="scroll-container">
-          <img src="20170213_HIRSCHER_MARCEL_C6864.jpg" alt="Cinque Terre" width="600" height="400">
-          <img src="imrs.jpg" alt="Forest" width="600" height="400">
-          <img src="2547335-52845410-2560-1440.jpg" alt="Northern Lights" width="600" height="400">
-          <img src="1491660_fancybox_1AoOXI_IwFqco.jpg" alt="Mountains" width="600" height="400">
-          
-        </div>
-        
-        
-        </body>
-        </html>
-        
-          
-    <section>     
-     
-        </div>
-        <h2>Über Marcel Hirscher</h2>
-        <p>Marcel Hirscher ist ein österreichischer Skifahrer, der zu den erfolgreichsten alpinen Skirennläufern aller Zeiten gehört. Er wurde am 2. März 1989 in Annaberg-Lungötz, Österreich, geboren.</p>
-        <h3>Erfolge</h3>
-        <ul>
-            <li>Sieger des Gesamtweltcups der alpinen Skirennläufer 8 Mal (2012–2019)</li>
-            <li>Gewinner von 11 Goldmedaillen bei Weltmeisterschaften</li>
-            <li>Olympiasieger in den Disziplinen Slalom und Riesenslalom bei den Olympischen Winterspielen 2018</li>
-        </ul>
-        <h3>Frühes Leben und Karriere</h3>
-        <p>Marcel Hirscher begann im Alter von zwei Jahren mit dem Skifahren. Sein Talent wurde früh erkannt, und er wurde in die österreichische Skijugendmannschaft aufgenommen. Seit seinem Debüt im Weltcup im Jahr 2007 hat er zahlreiche Siege und Auszeichnungen erzielt.</p>
-        <h3>Persönliches</h3>
-        <p>Marcel Hirscher ist für seine bescheidene Persönlichkeit und seine Entschlossenheit auf der Skipiste bekannt. Neben dem Skifahren interessiert er sich für Bergsteigen und Mountainbiken.</p>
-    </section>
+<!-- Create buttons to open specific tab content -->
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+<!-- Tab content -->
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Home is where the heart is..</p>
+</div>
+
+<div id="News" class="tabcontent">
+  <h3>News</h3>
+  <p>Some news this fine day!</p>
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Who we are and what we do.</p>
+</div>
+
+<script>
+  function openPage(pageName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+
+    // Show the specific tab content
+    document.getElementById(pageName).style.display = "block";
+
+    // Add the specific color to the button used to open the tab content
+    elmnt.style.backgroundColor = color;
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+
 </body>
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcel Hirscher Webseite</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            padding: 20px;
-        }
-        h1, h2, p {
-            margin-bottom: 10px;
-        }
-        .gold-frame {
-            border: 2px solid gold;
-            padding: 10px;
-            background-color: gold;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        ul {
-            padding-left: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Marcel Hirscher</h1>
-        <p>Professioneller Skifahrer</p>
-    </header>
-    <section>
-        <h2>Über Marcel Hirscher</h2>
-        <p>Marcel Hirscher ist ein österreichischer Skifahrer, der zu den erfolgreichsten alpinen Skirennläufern aller Zeiten gehört.</p>
-    </section>
-    <section>
-        <div class="gold-frame">
-            <h2>Erfolge</h2>
-            <ul>
-                <li>Sieger des Gesamtweltcups der alpinen Skirennläufer 8 Mal (2012–2019)</li>
-                <li>Gewinner von 11 Goldmedaillen bei Weltmeisterschaften</li>
-                <li>Olympiasieger in den Disziplinen Slalom und Riesenslalom bei den Olympischen Winterspielen 2018</li>
-            </ul>
-        </div>
-    </section>
-</body>
-</html>
-
 </html>
