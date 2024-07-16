@@ -1,0 +1,38 @@
+import pandas as pd
+
+# Data for Study 1
+data_study1 = {
+    "Metric": ["HR peak (bpm)", "HRR1 (bpm)", "HRR2 (bpm)", "HRR3 (bpm)"],
+    "All Subjects": ["191.5 ± 7.6", "26.0 ± 13.8", "57.6 ± 14.8", "81.3 ± 11.3"],
+    "Young (<18 years; n = 137)": ["193.1 ± 6.7", "22.4 ± 10.8", "58.5 ± 14.6", "82.7 ± 10.2"],
+    "Adults (≥18 years; n = 137)": ["189.8 ± 8.2", "29.5 ± 15.6", "56.7 ± 14.9", "79.9 ± 12.2"],
+    "P Value": ["<0.001", "<0.001", "0.315", "0.04"]
+}
+
+# Data for Study 2
+data_study2 = {
+    "Metric": ["HR peak effort (bpm)", "HR max (bpm)", "HRR1 (bpm)", "HRR2 (bpm)", "HRR3 (bpm)", "HRR4 (bpm)", "HRR5 (bpm)"],
+    "Adolescents (16.4 ± 0.3 years)": ["68 ± 2.7", "205 ± 6.0", "43 ± 6.0", "70 ± 5.2", "92 ± 5.0", "110 ± 4.0", "123 ± 4.5"],
+    "Adults (27.9 ± 0.2 years)": ["69 ± 2.3", "194 ± 6.5", "42 ± 1.0", "74 ± 4.0", "86 ± 3.5*", "101 ± 3.3*", "106 ± 3.0*"]
+}
+
+# Data for Study 3
+data_study3 = {
+    "Metric": ["HR peak effort (bpm)", "AHRR1 (bpm)", "AHRR2 (bpm)", "AHRR3 (bpm)", "AHRR4 (bpm)", "AHRR5 (bpm)"],
+    "Adolescents": [190, 44, 70, 80, 84, 86],
+    "Adults": [170, 48, 70, 78, 80, 84]
+}
+
+# Convert data to DataFrames
+df_study1 = pd.DataFrame(data_study1)
+df_study2 = pd.DataFrame(data_study2)
+df_study3 = pd.DataFrame(data_study3)
+
+# Save to Excel
+excel_path = "/mnt/data/Heart_Rate_Recovery_Studies.xlsx"
+with pd.ExcelWriter(excel_path) as writer:
+    df_study1.to_excel(writer, sheet_name='Study 1', index=False)
+    df_study2.to_excel(writer, sheet_name='Study 2', index=False)
+    df_study3.to_excel(writer, sheet_name='Study 3', index=False)
+
+excel_path
